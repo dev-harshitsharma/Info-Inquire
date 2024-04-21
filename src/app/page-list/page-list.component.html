@@ -1,0 +1,54 @@
+<div
+  *ngIf="pages.length"
+  class="flex mr-auto ml-auto max-w-screen-lg items-center justify-center"
+>
+  <div class="border-1 max-w-screen-lg px-10 m-3 border-gray-200 md:rounded-lg">
+    <table class="divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            scope="col"
+            class="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+          >
+            <span class="font-bold">Title</span>
+          </th>
+          <th
+            scope="col"
+            class="px-12 py-3.5 text-left text-sm font-bold text-gray-700"
+          >
+            WordCount
+          </th>
+          <th
+            scope="col"
+            class="px-4 py-3.5 text-left text-sm font-bold text-gray-700"
+          >
+            Snippet
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 bg-white">
+        <tr *ngFor="let page of pages">
+          <td class="whitespace-nowrap px-4 py-4">
+            <div class="flex items-center">
+              <div class="ml-1">
+                <div class="text-sm font-medium text-gray-900">
+                  {{ page.title }}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="px-12 py-4">
+            <div class="text-sm text-gray-900">{{ page.wordcount }}</div>
+          </td>
+          <td class="px-2 py-4">
+            <span
+              class="inline-flex bg-green-100 px-2 text-xs font-semibold text-green-800"
+              [innerHTML]="sanitizeSnippet(page.snippet)"
+            >
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
